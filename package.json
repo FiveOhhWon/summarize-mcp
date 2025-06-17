@@ -1,0 +1,55 @@
+{
+  "name": "@fiveohhwon/summarize-mcp",
+  "version": "1.2.0",
+  "description": "An MCP server that converts text summaries to speech using OpenAI TTS and plays them in the background",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "test": "npm run build && node test.js",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "bin": {
+    "summarize-mcp": "./dist/index.js"
+  },
+  "files": [
+    "dist/**/*",
+    "README.md",
+    "LICENSE",
+    "package.json"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "openai",
+    "tts",
+    "text-to-speech",
+    "audio",
+    "ai",
+    "llm"
+  ],
+  "author": "FiveOhhWon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FiveOhhWon/summarize-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FiveOhhWon/summarize-mcp/issues"
+  },
+  "homepage": "https://github.com/FiveOhhWon/summarize-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.3",
+    "openai": "^5.5.0",
+    "zod": "^3.25.67"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.3",
+    "rimraf": "^6.0.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

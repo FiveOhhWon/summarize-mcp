@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "summarize": {
+      "command": "npx",
+      "args": ["-y", "@fiveohhwon/summarize-mcp"],
+      "env": {
+        "OPENAI_API_KEY": "sk-your-openai-api-key-here"
+      }
+    }
+  }
+}
