@@ -41,6 +41,9 @@
     "url": "https://github.com/FiveOhhWon/summarize-mcp/issues"
   },
   "homepage": "https://github.com/FiveOhhWon/summarize-mcp#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.3",
     "openai": "^5.5.0",
