@@ -349,7 +349,7 @@ async function main() {
       tools: [
         {
           name: "play_summary",
-          description: "Convert text summary to speech using OpenAI TTS and play it in the background. Keeps summaries under 100 words unless otherwise requested. Uses the saved voice and tone preferences unless overridden.",
+          description: "**IMPORTANT TO KEEP THE SUMMARY AS SHORT AND CONCISE AS POSSIBLE** Convert text summary to speech using OpenAI TTS and play it in the background. Keeps summaries under 100 words unless otherwise requested. Uses the saved voice and tone preferences unless overridden.",
           inputSchema: {
             type: "object",
             properties: {
