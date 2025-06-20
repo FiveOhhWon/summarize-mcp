@@ -33,14 +33,6 @@ summarize-mcp enables LLMs to convert any text summary into natural-sounding spe
 
 ## 📦 Installation
 
-### Using pip (recommended)
-
-```bash
-pip install summarize-mcp
-```
-
-### From Source
-
 ```bash
 git clone https://github.com/FiveOhhWon/summarize-mcp.git
 cd summarize-mcp
@@ -57,23 +49,7 @@ Add this configuration to your Claude Desktop config file:
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`  
 **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
-#### Using pip install:
-
-```json
-{
-  "mcpServers": {
-    "summarize": {
-      "command": "python",
-      "args": ["-m", "summarize_mcp"],
-      "env": {
-        "OPENAI_API_KEY": "your-openai-api-key"
-      }
-    }
-  }
-}
-```
-
-#### Using local development:
+#### Configuration:
 
 ```json
 {
