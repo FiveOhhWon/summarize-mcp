@@ -11,20 +11,20 @@ summarize-mcp enables LLMs to convert any text summary into natural-sounding spe
 ## 🚀 Key Features
 
 - **🎯 Simple & Focused**: One tool that does one thing exceptionally well
-- **🎤 Multiple Voices**: Choose from 7 distinct OpenAI voices (alloy, echo, fable, onyx, nova, shimmer, coral)
+- **🎤 Multiple Voices**: Choose from 10 distinct OpenAI voices (alloy, ash, ballad, coral, echo, fable, nova, onyx, sage, shimmer)
 - **🎨 Custom Instructions**: Control how the text should be spoken
 - **🔧 Background Playback**: Audio plays in the background without blocking
 - **🌍 Cross-Platform**: Works on macOS, Windows, and Linux
 - **💾 Persistent Preferences**: Save your favorite voice and tone settings
 - **🎯 Multiple Tools**: Set voice, set tone, and play summaries
 - **🧹 Automatic Cleanup**: Temporary files are cleaned up automatically
-- **🛡️ Type-Safe**: Full TypeScript support with Zod validation
+- **🛡️ Type-Safe**: Full Python type hints with Pydantic validation
 - **📊 Comprehensive Logging**: Debug mode for troubleshooting
 - **⚡ Performance Optimized**: Efficient file handling and cleanup
 
 ## 📋 Prerequisites
 
-- **Node.js** 16 or higher
+- **Python** 3.8 or higher
 - **OpenAI API Key** with access to TTS models
 - **Audio Player** (automatically detected):
   - **macOS**: Built-in `afplay` (no installation needed)
@@ -33,16 +33,10 @@ summarize-mcp enables LLMs to convert any text summary into natural-sounding spe
 
 ## 📦 Installation
 
-### Using npx (recommended)
+### Using pip (recommended)
 
 ```bash
-npx @fiveohhwon/summarize-mcp
-```
-
-### From npm
-
-```bash
-npm install -g @fiveohhwon/summarize-mcp
+pip install summarize-mcp
 ```
 
 ### From Source
@@ -50,8 +44,7 @@ npm install -g @fiveohhwon/summarize-mcp
 ```bash
 git clone https://github.com/FiveOhhWon/summarize-mcp.git
 cd summarize-mcp
-npm install
-npm run build
+pip install -e .
 ```
 
 ## 🏃 Configuration
@@ -64,14 +57,14 @@ Add this configuration to your Claude Desktop config file:
 **Windows**: `%APPDATA%\Claude\claude_desktop_config.json`  
 **Linux**: `~/.config/Claude/claude_desktop_config.json`
 
-#### Using npx (recommended):
+#### Using pip install:
 
 ```json
 {
   "mcpServers": {
     "summarize": {
-      "command": "npx",
-      "args": ["-y", "@fiveohhwon/summarize-mcp"],
+      "command": "python",
+      "args": ["-m", "summarize_mcp"],
       "env": {
         "OPENAI_API_KEY": "your-openai-api-key"
       }
@@ -80,29 +73,14 @@ Add this configuration to your Claude Desktop config file:
 }
 ```
 
-#### Using global install:
+#### Using local development:
 
 ```json
 {
   "mcpServers": {
     "summarize": {
-      "command": "summarize-mcp",
-      "env": {
-        "OPENAI_API_KEY": "your-openai-api-key"
-      }
-    }
-  }
-}
-```
-
-#### Using local build:
-
-```json
-{
-  "mcpServers": {
-    "summarize": {
-      "command": "node",
-      "args": ["/absolute/path/to/summarize-mcp/dist/index.js"],
+      "command": "python",
+      "args": ["/absolute/path/to/summarize-mcp/src/summarize_mcp/server.py"],
       "env": {
         "OPENAI_API_KEY": "your-openai-api-key"
       }
@@ -228,19 +206,19 @@ This will use custom instructions for this summary only.
 
 ```bash
 # Install dependencies
-npm install
+pip install -r requirements.txt
 
-# Run in development mode with hot reload
-npm run dev
+# Install in development mode
+pip install -e .
 
-# Build for production
-npm run build
+# Run the server
+python -m summarize_mcp
 
-# Type checking
-npm run typecheck
+# Run tests
+python test.py
 
 # Run with debug logging
-DEBUG=true npm run dev
+DEBUG=true python -m summarize_mcp
 ```
 
 ## 🏗️ Architecture
@@ -248,11 +226,14 @@ DEBUG=true npm run dev
 ```
 summarize-mcp/
 ├── src/
-│   └── index.ts        # Main MCP server implementation
-├── dist/               # Compiled JavaScript (generated)
-├── package.json        # Project metadata and scripts
-├── tsconfig.json       # TypeScript configuration
-└── README.md          # This file
+│   └── summarize_mcp/
+│       ├── __init__.py      # Package initialization
+│       ├── __main__.py      # Entry point for python -m
+│       └── server.py        # Main MCP server implementation
+├── pyproject.toml           # Python project metadata
+├── requirements.txt         # Python dependencies
+├── test.py                  # Test script
+└── README.md               # This file
 ```
 
 ## 🔧 Technical Details
@@ -271,7 +252,7 @@ summarize-mcp/
   - Persists voice and tone settings between sessions
   - Automatic loading on startup
 - **Error Handling**: Comprehensive error handling with specific error types
-- **Validation**: Input validation using Zod schemas
+- **Validation**: Input validation using Pydantic models
 
 ## 🚨 Troubleshooting
 
@@ -309,6 +290,13 @@ sudo pacman -S mpg123
 
 ## 📝 Changelog
 
+### v2.0.0 (Python Rewrite)
+- 🐍 Complete rewrite in Python for better cross-platform support
+- 🔧 Improved async handling with Python's asyncio
+- 📦 Simplified installation with pip
+- 🛡️ Enhanced type safety with Pydantic
+- 🚀 Better performance and reliability
+
 ### v1.2.0 (Persistent Preferences)
 - 💾 Added persistent state management for voice and tone preferences
 - 🎯 Added `set_voice` tool to set default voice
@@ -336,6 +324,7 @@ sudo pacman -S mpg123
 ## 🔮 Roadmap
 
 - [x] Cross-platform audio playback (Windows, Linux)
+- [x] Python implementation for better cross-platform support
 - [ ] Additional TTS providers (ElevenLabs, Amazon Polly)
 - [ ] Audio format options (WAV, OGG)
 - [ ] Playback control (pause, resume, stop)
