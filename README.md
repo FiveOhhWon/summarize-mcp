@@ -297,6 +297,26 @@ sudo pacman -S mpg123
 - ✨ TypeScript implementation
 - ✨ Comprehensive error handling
 
+## 💰 Estimated Costs
+
+This tool uses OpenAI's `gpt-4o-mini-tts` model for text-to-speech conversion. Here's the pricing breakdown:
+
+| Model | Audio Output Price | Estimated Cost |
+|-------|-------------------|----------------|
+| `gpt-4o-mini-tts` | $12.00 per 1M tokens | **$0.015 per minute** of audio |
+
+### Cost Examples:
+- **100-word summary** (~30 seconds): ~$0.0075
+- **500-word summary** (~2.5 minutes): ~$0.0375
+- **1000-word summary** (~5 minutes): ~$0.075
+
+The actual cost depends on:
+- Length of your summaries
+- Speaking speed (instructions can affect this)
+- How frequently you use the tool
+
+For current pricing details, see [OpenAI's pricing page](https://platform.openai.com/docs/pricing).
+
 ## 🔮 Roadmap
 
 - [x] Cross-platform audio playback (Windows, Linux)
